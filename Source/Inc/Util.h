@@ -12,8 +12,6 @@
 
 #define MILISECONDS_IN_SECOND 1000
 
-#define current_time_ms() HAL_GetTick()
-
 #define miliseconds_to_seconds(time_in_seconds) \
 		((time_in_seconds) / MILISECONDS_IN_SECOND)
 
