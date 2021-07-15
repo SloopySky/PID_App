@@ -2,12 +2,18 @@
  * Diagnostics.h
  *
  *  Created on: 10.06.2021
- *      Author: marek
+ *      Author: MK
  */
 
-#ifndef APPLICATIONLAYER_DIAGNOSTICS_H_
-#define APPLICATIONLAYER_DIAGNOSTICS_H_
+#ifndef DIAGNOSTICS_H_
+#define DIAGNOSTICS_H_
 
+#include <stdint.h>
+#include <stdbool.h>
 
+bool is_diagnostics_enabled(void);
+void enable_diagnostics(void);
+void disable_diagnostics(void);
+bool diagnostics_period_elapsed(void);
 
-#endif /* APPLICATIONLAYER_DIAGNOSTICS_H_ */
+#endif /* DIAGNOSTICS_H_ */

@@ -2,12 +2,11 @@
  * Dt.c
  *
  *  Created on: 27.06.2021
- *      Author: marek
+ *      Author: MK
  */
 
 #include "Dt.h"
-#include "Util.h"
-#include "Config.h"
+#include "Timer.h"
 
 static uint32_t previous_time_ms = 0;
 

@@ -2,14 +2,15 @@
  * Setpoint.h
  *
  *  Created on: 19.06.2021
- *      Author: marek
+ *      Author: MK
  */
 
-#ifndef APPLICATIONLAYER_SETPOINT_H_
-#define APPLICATIONLAYER_SETPOINT_H_
+#ifndef SETPOINT_H_
+#define SETPOINT_H_
 
 #include <stdint.h>
 
+void setpoint_init(void);
 int16_t get_setpoint(void);
 
-#endif /* APPLICATIONLAYER_SETPOINT_H_ */
+#endif /* SETPOINT_H_ */

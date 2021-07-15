@@ -10,18 +10,15 @@
 #include "DigitalOutput.h"
 #include "PWM.h"
 
-
-#define FULL_SPEED 1000
-
-typedef enum {CW, CCW} direction;
-
-DigitalOutput motor_dir_pin;
+DigitalOutput motor_dir_pin = {
+	.*port = MOTOR_PORT;
+	.pin = MOTOR_DIR_PIN;
+};
 
 static void set_direction(direction dir);
-static void set_speed(uint16_t speed_arg);
+static void set_speed(uint16_t speed);
 
-
-void motor_init(uint32_t *port, uint32_t pin) {
+void motor_init(void) {
 	motor_dir_pin.port = port;
 	motor_dir_pin.pin = pin;
 	digital_output_init(motor_dir_pin);
@@ -45,11 +42,11 @@ static void set_speed(uint16_t speed) {
 	PWM_set_duty(MOTOR_PWM_CHANNEL, speed);
 }
 
-static void set_direction(direction direction_arg) {
-	if (direction_arg == CW) {
+static void set_direction(direction dir) {
+	if (dir == CW) {
 		pin_set(motor_dir_pin);
 	}
-	else if (direction_arg == CCW) {
+	else if (dir == CCW) {
 		pin_reset(motor_dir_pin);
 	}
 	else {

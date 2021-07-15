@@ -2,7 +2,7 @@
  * Dt.h
  *
  *  Created on: 27.06.2021
- *      Author: marek
+ *      Author: MK
  */
 
 #ifndef DT_H_

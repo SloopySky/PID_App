@@ -10,7 +10,11 @@
 
 #include <stdint.h>
 
-void motor_init(uint32_t *port, uint32_t pin);
+#define FULL_SPEED 1000
+
+typedef enum {CW, CCW} direction;
+
+void motor_init(void);
 
 void rotate_motor(int16_t speed);
 
