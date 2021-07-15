@@ -10,6 +10,7 @@
 
 #include "UART.h"
 
+void sleep_mode_init(void);
 void Hw_init(void);
 
 #endif /* HWLAYER_H_ */

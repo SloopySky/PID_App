@@ -11,47 +11,8 @@
 
 #include "HwLayer.h"
 #include "SwLayer.h"
-
-
-/*
-systick_config(sample_time);
-
-isr() {
-	pid_control();
-
-	if (diagnostics_enabled == true) {
-		if (diagnostics_period_elapsed()) {
-			send_state(state);
-		}
-	}
-
-}
-
-bool diagnostics_period_elapsed(void) {
-	static uint16_t sample_time_count = 0;
-	sample_time_count += sample_time;
-
-	bool elapsed = false;
-	if (sample_time_count >= diagnostics_period) {
-		elapsed = true;
-		sample_time_count = 0;
-	}
-	return elapsed;
-}
-*/
-
-/*
-void pid_control(void) {
-	state.current_time_s = 0,
-	state.dt_ms = get_dt_ms();
-	state.setpoint = 0;
-	state.process_value = 0;
-	state.error = get_setpoint() - get_process_value();
-	state.pid_output = calc_pid_output(error, dt_ms);
-
-	rotate_motor(pid_output);
-}
-*/
+#include "Config.h"
+#include "Util.h"
 
 
 /*
@@ -62,9 +23,35 @@ response();
 */
 
 
+void get_state(void);
+void send_state(void);
+
 int main(void) {
 	Hw_init();
 
 	while(1) {
+		get_state();
+		rotate_motor(state.pid_output);
+
+		if (is_diagnostics_enabled()) {
+			if (diagnostics_period_elapsed()) {
+				send_state();
+			}
+		}
+
+		sleep_mode();
 	}
+}
+
+void get_state(void) {
+	state.current_time_s = miliseconds_to_seconds(current_time_ms());
+	state.dt_ms = get_dt_ms();
+	state.setpoint = get_setpoint();
+	state.process_value = get_process_value();
+	state.error = state.setpoint - state.process_value;
+	state.pid_output = calc_pid_output(state.error, state.dt_ms);
+}
+
+void send_state(void) {
+
 }
