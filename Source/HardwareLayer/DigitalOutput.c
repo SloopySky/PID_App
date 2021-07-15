@@ -2,7 +2,7 @@
  * DigitalOutput.c
  *
  *  Created on: 19.06.2021
- *      Author: marek
+ *      Author: MK
  */
 
 #include "DigitalOutput.h"

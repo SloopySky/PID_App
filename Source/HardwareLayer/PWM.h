@@ -5,8 +5,8 @@
  *      Author: MK
  */
 
-#ifndef HARDWARELAYER_PWM_H_
-#define HARDWARELAYER_PWM_H_
+#ifndef PWM_H_
+#define PWM_H_
 
 #include "stm32f1xx.h"
 
@@ -18,4 +18,4 @@ void PWM_add_channel(uint32_t channel, GPIO_TypeDef * port);
 
 void PWM_set_duty(uint32_t channel, uint16_t duty);
 
-#endif /* HARDWARELAYER_PWM_H_ */
+#endif /* PWM_H_ */

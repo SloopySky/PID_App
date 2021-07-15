@@ -2,7 +2,7 @@
  * DigitalOutput.h
  *
  *  Created on: 19.06.2021
- *      Author: marek
+ *      Author: MK
  */
 
 #ifndef DIGITALOUTPUT_H_
