@@ -13,5 +13,7 @@ void Hw_init(void) {
 	SystemCoreClock = FREQ;	// FREQ defined in Config.h
 	HAL_Init();
 
+	timer_init(SAMPLE_TIME_MS);
+	Pwr_init();
 	UART_init(UART2, 115200);
 }

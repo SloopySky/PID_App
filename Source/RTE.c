@@ -17,41 +17,46 @@
 
 /*
 OPCODE INTERRUPT
-
 get_opcode();
 response();
 */
 
-
-void get_state(void);
+void PID_routine(void);
 void send_state(void);
 
 int main(void) {
 	Hw_init();
 
-	while(1) {
-		get_state();
-		rotate_motor(state.pid_output);
+	setpoint_init();
+	motor_init();
 
-		if (is_diagnostics_enabled()) {
-			if (diagnostics_period_elapsed()) {
-				send_state();
-			}
+	while(1) {
+		PID_routine();
+
+		if (is_diagnostics_enabled()) {}
+		if (diagnostics_period_elapsed()) {
+			send_state();
 		}
 
 		sleep_mode();
+		/* Wakes up automatically when SAMPLE_TIME_MS expires */
 	}
 }
 
-void get_state(void) {
-	state.current_time_s = miliseconds_to_seconds(current_time_ms());
-	state.dt_ms = get_dt_ms();
+void PID_routine(void) {
+	state.current_time_s = miliseconds_to_seconds(get_current_time_ms());
 	state.setpoint = get_setpoint();
-	state.process_value = get_process_value();
+	state.process_value = 0;  // get_process_value();
 	state.error = state.setpoint - state.process_value;
-	state.pid_output = calc_pid_output(state.error, state.dt_ms);
+	state.pid_output = calc_pid_output(state.error, SAMPLE_TIME_MS);
+	rotate_motor(state.pid_output);
 }
 
 void send_state(void) {
-
+	printf("----------\n");
+	printf("Time = %u [s]\n", state.current_time_s);
+	printf("Setpoint = %d [deg]\n", state.setpoint);
+	printf("Process value = %d [deg]\n", state.process_value);
+	printf("Error = %d [deg]\n", state.error);
+	printf("PID output = %d\n", state.pid_output);
 }

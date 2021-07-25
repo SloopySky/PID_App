@@ -8,9 +8,10 @@
 #ifndef HWLAYER_H_
 #define HWLAYER_H_
 
+#include "Timer.h"
+#include "Pwr.h"
 #include "UART.h"
 
-void sleep_mode_init(void);
 void Hw_init(void);
 
 #endif /* HWLAYER_H_ */
