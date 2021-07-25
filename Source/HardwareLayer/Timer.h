@@ -8,11 +8,9 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-#include "stm32f1xx.h"
+#include "stdint.h"
 
-#define current_time_ms() HAL_GetTick()
-
-void set_SysTick_counter_value(uint32_t cnt_value);
-void set_SysTick_period(uint16_t period_ms);
+void timer_init(uint16_t period_ms);
+uint32_t get_current_time_ms(void);
 
 #endif /*TIMER_H_ */

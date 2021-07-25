@@ -12,6 +12,6 @@ void Pwr_init(void) {
 	__HAL_RCC_PWR_CLK_ENABLE();
 }
 
-void enter_sleep_mode(void) {
+void sleep_mode(void) {
 	HAL_PWR_EnterSLEEPMode(0, PWR_SLEEPENTRY_WFI);
 }

@@ -9,6 +9,6 @@
 #define PWR_H_
 
 void Pwr_init(void);
-void enter_sleep_mode(void);
+void sleep_mode(void);
 
 #endif /*PWR_H_ */

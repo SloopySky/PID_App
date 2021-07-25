@@ -8,7 +8,7 @@
 #ifndef DIGITALOUTPUT_H_
 #define DIGITALOUTPUT_H_
 
-#include "stm32f1xx.h"
+#include "stdint.h"
 
 typedef struct {
 	uint32_t *port;
