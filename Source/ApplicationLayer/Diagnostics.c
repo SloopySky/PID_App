@@ -6,8 +6,9 @@
  */
 
 #include "Diagnostics.h"
-#include "Config.h"
 #include "UART.h"
+#include "Timer.h"
+#include "Config.h"
 
 static bool diagnostics_enabled = false;
 
@@ -24,13 +25,13 @@ void disable_diagnostics(void) {
 }
 
 bool diagnostics_period_elapsed(void) {
-	static uint16_t sample_time_count = 0;
-	sample_time_count += sample_time;
+	static uint32_t time_ms = 0;
 
 	bool elapsed = false;
-	if (sample_time_count >= diagnostics_period) {
+	uint32_t current_time_ms = get_current_time_ms();
+	if (current_time_ms - time_ms >= DIAGNOSTICS_PERIOD) {
+		time_ms = current_time_ms;
 		elapsed = true;
-		sample_time_count = 0;
 	}
 	return elapsed;
 }

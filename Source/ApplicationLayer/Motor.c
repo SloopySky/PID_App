@@ -11,16 +11,14 @@
 #include "PWM.h"
 
 DigitalOutput motor_dir_pin = {
-	.*port = MOTOR_PORT;
-	.pin = MOTOR_DIR_PIN;
+	MOTOR_PORT,		// uint32_t *port
+	MOTOR_DIR_PIN	// uint32_t pin
 };
 
 static void set_direction(direction dir);
 static void set_speed(uint16_t speed);
 
 void motor_init(void) {
-	motor_dir_pin.port = port;
-	motor_dir_pin.pin = pin;
 	digital_output_init(motor_dir_pin);
 
 	PWM_init(MOTOR_PWM_TIMER);
