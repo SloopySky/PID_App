@@ -15,14 +15,14 @@
 /* Otherwise app will not work properly */
 #define FREQ 					8000000
 
-/* RTE SCHEDULER PERIOD [ms] */
-#define SCHEDULER_PERIOD_MS 	1000
+/* SAMPLE TIME [ms] */
+#define SAMPLE_TIME_MS 			10
 
-/* MIN SAMPLE TIME [ms] */
-#define MIN_SAMPLE_TIME_MS 		5
+/* DIAGNOSTIC PERIOD [ms] */
+#define DIAGNOSTICS_PERIOD		1000
 
 /* UART CFG */
-#define UART_INSTANCE 			UART1B  /* To choose from: {UART1A, UART1B, UART2, UART3} */
+#define UART_INSTANCE 			UART2  /* To choose from: {UART1A, UART1B, UART2, UART3} */
 #define UART_BAUDRATE 			115200  /* To choose from: {9600, 19200, 38400, 115200} */
 
 /* MOTOR CONFIG */
@@ -37,4 +37,3 @@
 #define SETPOINT_LIMIT 			180
 
 #endif /* CONFIG_H_ */
-

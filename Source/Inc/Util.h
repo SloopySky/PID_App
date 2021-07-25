@@ -8,8 +8,6 @@
 #ifndef UTIL_H_
 #define UTIL_H_
 
-#include "stm32f1xx.h"
-
 #define MILISECONDS_IN_SECOND 1000
 
 #define miliseconds_to_seconds(time_in_seconds) \
